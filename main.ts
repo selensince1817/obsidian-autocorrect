@@ -62,8 +62,9 @@ export default class AutoCorrecter extends Plugin {
 				const cursor = view.editor.getCursor();
 				const text = view.editor.getLine(cursor.line);
 				// Check if the text is empty and return early if it is
+				let debug = new Notice(`Trimmed text: "${text.trim()}"`);
 				if (text.trim().length < 2) {
-					new Notice(`Line is too short to process. Trimmed text: "${text.trim()}"`);
+					
 					return;
 				}
 				// LLM has a very hard time reproducing the leading tabs in markdown bullet points
